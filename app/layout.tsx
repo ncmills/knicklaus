@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  weight: ["400", "700", "900"],
 });
 
 export const metadata: Metadata = {
-  title: "Knicklaus",
+  title: "Knickolaus Mills",
   description: "Home of all my projects",
 };
 
@@ -26,21 +27,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} h-full`}>
-      <body className="min-h-full flex flex-col bg-black text-white font-[family-name:var(--font-geist)]">
-        <nav className="w-full border-b border-white/10 bg-black/80 backdrop-blur-sm sticky top-0 z-50">
-          <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="/" className="text-lg font-bold tracking-tight">
-              Knicklaus
+    <html lang="en" className={`${playfair.variable} h-full`}>
+      <body className="min-h-full flex flex-col bg-black text-white font-[family-name:var(--font-playfair)]">
+        <nav className="w-full fixed top-0 z-50 bg-gradient-to-b from-black/60 to-transparent">
+          <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="/" className="text-2xl font-black tracking-tight">
+              Knickolaus Mills
             </a>
-            <div className="flex gap-5 text-sm">
+            <div className="flex gap-6 text-sm font-medium">
               {links.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white/60 hover:text-white transition-colors"
+                  className="text-white/70 hover:text-white transition-colors"
                 >
                   {link.name}
                 </a>
@@ -48,9 +49,7 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <main className="flex-1 flex items-center justify-center">
-          {children}
-        </main>
+        {children}
       </body>
     </html>
   );
