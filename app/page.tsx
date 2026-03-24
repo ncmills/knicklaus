@@ -8,7 +8,7 @@ export default function Home() {
         alt="Knickolaus Mills"
         fill
         priority
-        className="object-contain"
+        className="object-cover"
       />
     </div>
   );
