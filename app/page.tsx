@@ -2,13 +2,14 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="relative w-full h-screen flex items-center justify-center">
+    <div className="w-full min-h-screen">
       <Image
         src="/hero.jpeg"
         alt="Knickolaus Mills"
-        fill
+        width={1200}
+        height={1200}
         priority
-        className="object-cover"
+        className="w-full h-auto"
       />
     </div>
   );
