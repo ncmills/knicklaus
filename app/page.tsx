@@ -5,7 +5,7 @@ export default function Home() {
     <div className="w-full min-h-screen">
       <Image
         src="/hero.jpeg"
-        alt="Knickolaus Mills"
+        alt="Nicholaus C. Mills"
         width={1200}
         height={1200}
         priority

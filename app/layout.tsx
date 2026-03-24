@@ -9,7 +9,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Knickolaus Mills",
+  title: "Nicholaus C. Mills",
   description: "Home of all my projects",
 };
 
@@ -19,6 +19,7 @@ const links = [
   { name: "What Peptides Do", href: "https://whatpeptidesdo.com" },
   { name: "Kings Clothiers", href: "https://kingsclothiers.com" },
   { name: "ImFrustrated", href: "https://imfrustrated.org" },
+  { name: "I Don't Have a Will", href: "https://idonthaveawill.com" },
 ];
 
 export default function RootLayout({
@@ -32,7 +33,7 @@ export default function RootLayout({
         <nav className="w-full fixed top-0 z-50 bg-gradient-to-b from-black/60 to-transparent">
           <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
             <a href="/" className="text-2xl font-black tracking-tight">
-              Knickolaus Mills
+              Nicholaus C. Mills
             </a>
             <div className="flex gap-6 text-sm font-medium">
               {links.map((link) => (
