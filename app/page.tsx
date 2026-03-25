@@ -92,7 +92,7 @@ export default function Home() {
       <div className="absolute inset-0 z-10 pointer-events-none">
         <div
           className="absolute left-0 right-0 flex items-center justify-center px-2 pointer-events-auto"
-          style={{ top: "33%", height: "20%" }}
+          style={{ top: "33%", height: "28%" }}
         >
           <div className="grid grid-cols-5 gap-2 md:gap-4 w-full">
             {projects.map((project, i) => (
@@ -101,7 +101,7 @@ export default function Home() {
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative flex flex-col items-center justify-center gap-2 p-3 md:p-5 rounded-2xl border transition-all duration-300 ${
+                className={`group relative flex flex-col items-center justify-center gap-2 p-3 md:p-5 rounded-2xl border h-full transition-all duration-300 ${
                   hovered === i
                     ? "bg-white/25 border-white/35 scale-[1.05] shadow-2xl shadow-black/20"
                     : "bg-white/[0.10] border-white/[0.15] backdrop-blur-md hover:bg-white/20 hover:border-white/30"
