@@ -13,15 +13,6 @@ export const metadata: Metadata = {
   description: "Home of all my projects",
 };
 
-const links = [
-  { name: "Tour de Fore", href: "https://tourdefore.com" },
-  { name: "DoppelWriter", href: "https://doppelwriter.com" },
-  { name: "What Peptides Do", href: "https://whatpeptidesdo.com" },
-  { name: "Kings Clothiers", href: "https://kingsclothiers.com" },
-  { name: "ImFrustrated", href: "https://imfrustrated.org" },
-  { name: "I Don't Have a Will", href: "https://idonthaveawill.com" },
-];
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,26 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-black text-white font-[family-name:var(--font-playfair)]">
-        <nav className="w-full fixed top-0 z-50 bg-gradient-to-b from-black/60 to-transparent">
-          <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a href="/" className="text-2xl font-black tracking-tight">
+        <header className="w-full fixed top-0 z-50 bg-gradient-to-b from-black/70 to-transparent">
+          <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-center">
+            <span className="text-3xl font-black tracking-tight">
               Nicholaus C. Mills
-            </a>
-            <div className="flex gap-6 text-sm font-medium">
-              {links.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
-            </div>
+            </span>
           </div>
-        </nav>
+        </header>
         {children}
       </body>
     </html>

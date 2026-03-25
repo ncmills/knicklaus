@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+/* Project-specific Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Literata:wght@400;700&family=Playfair+Display:wght@400;700;900&family=DM+Serif+Display&family=Space+Grotesk:wght@400;500;600&display=swap');
+
+/* Tour de Fore — Instrument Serif */
+.font-tour-de-fore {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.1em;
+}
+
+/* DoppelWriter — Literata */
+.font-doppelwriter {
+  font-family: 'Literata', serif;
+  font-weight: 700;
+}
+
+/* What Peptides Do — Instrument Serif italic */
+.font-peptides {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+}
+
+/* I'm Frustrated — Playfair Display */
+.font-frustrated {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+}
+
+/* I Don't Have a Will — DM Serif Display */
+.font-will {
+  font-family: 'DM Serif Display', serif;
+}
