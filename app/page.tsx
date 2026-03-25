@@ -81,13 +81,14 @@ export default function Home() {
 
   return (
     <div className="relative w-full min-h-screen">
-      {/* Background image — full contain so entire picture is always visible */}
-      <div
-        className="fixed inset-0 bg-contain bg-center bg-no-repeat bg-black"
-        style={{ backgroundImage: "url(/hero.jpeg)" }}
+      {/* Background image — full width, natural aspect ratio, sets page height */}
+      <img
+        src="/hero.jpeg"
+        alt="Nicholaus C. Mills"
+        className="absolute top-0 left-0 w-full h-auto min-h-screen object-cover object-top"
       />
       {/* Subtle overlay for grid readability */}
-      <div className="fixed inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-black/20" />
 
       {/* Grid content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center pt-24 pb-16 px-6">
