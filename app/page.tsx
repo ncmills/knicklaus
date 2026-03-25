@@ -92,7 +92,7 @@ export default function Home() {
       <div className="absolute inset-0 z-10 pointer-events-none">
         <div
           className="absolute left-0 right-0 flex items-center justify-center px-4 pointer-events-auto"
-          style={{ top: "38%", height: "20%" }}
+          style={{ top: "33%", height: "20%" }}
         >
           <div className="grid grid-cols-5 gap-2 md:gap-4 max-w-3xl w-full">
             {projects.map((project, i) => (
