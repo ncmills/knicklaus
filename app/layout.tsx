@@ -20,10 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} h-full`}>
-      <body className="min-h-full flex flex-col bg-black text-white font-[family-name:var(--font-playfair)]">
-        <header className="w-full fixed top-0 z-50 bg-gradient-to-b from-black/70 to-transparent">
+      <body className="min-h-full flex flex-col bg-[#e8e4df] text-black font-[family-name:var(--font-playfair)]">
+        <header className="w-full fixed top-0 z-50 bg-gradient-to-b from-white/70 to-transparent">
           <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-center">
-            <span className="text-3xl font-black tracking-tight">
+            <span className="text-3xl font-black tracking-tight text-black">
               Nicholaus C. Mills
             </span>
           </div>

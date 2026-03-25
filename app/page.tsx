@@ -80,49 +80,46 @@ export default function Home() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <div className="relative w-full min-h-screen">
-      {/* Background image — full width, natural aspect ratio, sets page height */}
+    <div className="relative w-full">
+      {/* The image drives the page height — fully visible, no crop */}
       <img
         src="/hero.jpeg"
         alt="Nicholaus C. Mills"
-        className="absolute top-0 left-0 w-full h-auto min-h-screen object-cover object-top"
+        className="w-full h-auto block"
       />
-      {/* Subtle overlay for grid readability */}
-      <div className="absolute inset-0 bg-black/20" />
 
-      {/* Grid content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center pt-24 pb-16 px-6">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-3xl w-full">
-          {projects.map((project, i) => (
-            <a
-              key={project.name}
-              href={project.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`group relative flex flex-col items-center justify-center gap-4 p-6 md:p-8 rounded-2xl border transition-all duration-300 ${
-                hovered === i
-                  ? "bg-white/20 border-white/30 scale-[1.03] shadow-2xl shadow-white/10"
-                  : "bg-white/[0.07] border-white/[0.12] backdrop-blur-md hover:bg-white/15 hover:border-white/25"
-              }`}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-              style={{
-                animationDelay: `${i * 80}ms`,
-              }}
-            >
-              {/* Logo */}
-              <div className="transition-transform duration-300 group-hover:scale-110">
-                {project.logo}
-              </div>
-
-              {/* Name in project's own font */}
-              <span
-                className={`${project.fontClass} text-sm md:text-base text-white/90 text-center leading-tight transition-colors duration-300 group-hover:text-white`}
+      {/* Grid overlaid between chin and handwritten text (~52-72% down the image) */}
+      <div className="absolute inset-0 z-10 pointer-events-none">
+        <div
+          className="absolute left-0 right-0 flex items-center justify-center px-4 pointer-events-auto"
+          style={{ top: "52%", height: "20%" }}
+        >
+          <div className="grid grid-cols-5 gap-2 md:gap-4 max-w-3xl w-full">
+            {projects.map((project, i) => (
+              <a
+                key={project.name}
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`group relative flex flex-col items-center justify-center gap-2 p-3 md:p-5 rounded-2xl border transition-all duration-300 ${
+                  hovered === i
+                    ? "bg-white/25 border-white/35 scale-[1.05] shadow-2xl shadow-black/20"
+                    : "bg-white/[0.10] border-white/[0.15] backdrop-blur-md hover:bg-white/20 hover:border-white/30"
+                }`}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
               >
-                {project.name}
-              </span>
-            </a>
-          ))}
+                <div className="transition-transform duration-300 group-hover:scale-110">
+                  {project.logo}
+                </div>
+                <span
+                  className={`${project.fontClass} text-[10px] md:text-sm text-black/80 text-center leading-tight transition-colors duration-300 group-hover:text-black`}
+                >
+                  {project.name}
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>
