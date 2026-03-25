@@ -34,11 +34,11 @@ const projects = [
     fontClass: "font-peptides",
     logo: (
       <svg viewBox="0 0 32 32" className="w-12 h-12" fill="none">
-        <circle cx="8" cy="16" r="3" stroke="#44ad96" strokeWidth="2" />
-        <circle cx="16" cy="8" r="3" stroke="#44ad96" strokeWidth="2" />
-        <circle cx="24" cy="16" r="3" stroke="#44ad96" strokeWidth="2" />
-        <line x1="10.5" y1="14" x2="13.5" y2="10" stroke="#44ad96" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="18.5" y1="10" x2="21.5" y2="14" stroke="#44ad96" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="8" cy="16" r="3" stroke="#e07832" strokeWidth="2" />
+        <circle cx="16" cy="8" r="3" stroke="#e07832" strokeWidth="2" />
+        <circle cx="24" cy="16" r="3" stroke="#e07832" strokeWidth="2" />
+        <line x1="10.5" y1="14" x2="13.5" y2="10" stroke="#e07832" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="18.5" y1="10" x2="21.5" y2="14" stroke="#e07832" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -92,7 +92,7 @@ export default function Home() {
       <div className="absolute inset-0 z-10 pointer-events-none">
         <div
           className="absolute left-0 right-0 flex items-center justify-center px-4 pointer-events-auto"
-          style={{ top: "52%", height: "20%" }}
+          style={{ top: "44%", height: "20%" }}
         >
           <div className="grid grid-cols-5 gap-2 md:gap-4 max-w-3xl w-full">
             {projects.map((project, i) => (
