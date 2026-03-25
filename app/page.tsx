@@ -81,13 +81,13 @@ export default function Home() {
 
   return (
     <div className="relative w-full min-h-screen">
-      {/* Background image */}
+      {/* Background image — full contain so entire picture is always visible */}
       <div
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
+        className="fixed inset-0 bg-contain bg-center bg-no-repeat bg-black"
         style={{ backgroundImage: "url(/hero.jpeg)" }}
       />
-      {/* Dim overlay so grid is readable but image + text at bottom still visible */}
-      <div className="fixed inset-0 bg-black/30" />
+      {/* Subtle overlay for grid readability */}
+      <div className="fixed inset-0 bg-black/20" />
 
       {/* Grid content */}
       <div className="relative z-10 min-h-screen flex items-center justify-center pt-24 pb-16 px-6">
