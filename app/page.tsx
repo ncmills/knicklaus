@@ -101,7 +101,7 @@ export default function Home() {
                 href={project.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group relative flex flex-col items-center justify-center gap-2 p-3 md:p-5 rounded-2xl border h-full transition-all duration-300 ${
+                className={`group relative flex flex-col items-center justify-center gap-2 p-3 md:p-5 rounded-2xl border aspect-square transition-all duration-300 ${
                   hovered === i
                     ? "bg-white/25 border-white/35 scale-[1.05] shadow-2xl shadow-black/20"
                     : "bg-white/[0.10] border-white/[0.15] backdrop-blur-md hover:bg-white/20 hover:border-white/30"
