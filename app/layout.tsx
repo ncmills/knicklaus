@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
@@ -14,6 +14,19 @@ export const metadata: Metadata = {
   title: "KNICKOLAUS - Nicholaus C. Mills",
   description: "A Pokemon-style adventure through my projects",
   metadataBase: new URL("https://knickolaus.com"),
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "KNICKOLAUS",
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

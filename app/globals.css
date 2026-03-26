@@ -5,14 +5,29 @@ canvas {
   image-rendering: crisp-edges;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
   background: #000;
   overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  /* Prevent iOS bounce/overscroll */
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: none;
 }
 
 /* Pixel-perfect rendering */
 * {
   -webkit-font-smoothing: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+/* Prevent text selection on game elements */
+button, div {
+  -webkit-user-select: none;
+  user-select: none;
 }

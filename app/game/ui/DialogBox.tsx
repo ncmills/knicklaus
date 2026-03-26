@@ -49,10 +49,12 @@ export default function DialogBox({ text, isVisible, cancellable, onDismiss, onC
   }, [isComplete, text.length, onDismiss]);
 
   const handleCancel = useCallback(() => {
-    if (onCancel) {
+    if (cancellable && onCancel) {
       onCancel();
+    } else {
+      onDismiss();
     }
-  }, [onCancel]);
+  }, [cancellable, onCancel, onDismiss]);
 
   useEffect(() => {
     if (!isVisible) return;
@@ -63,18 +65,13 @@ export default function DialogBox({ text, isVisible, cancellable, onDismiss, onC
         handleAction();
       } else if (e.key === 'Escape') {
         e.preventDefault();
-        // Cancellable dialogs call onCancel (no action), others just dismiss normally
-        if (cancellable) {
-          handleCancel();
-        } else {
-          onDismiss();
-        }
+        handleCancel();
       }
     };
 
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, [isVisible, handleAction, handleCancel, cancellable]);
+  }, [isVisible, handleAction, handleCancel]);
 
   if (!isVisible) return null;
 
@@ -82,31 +79,42 @@ export default function DialogBox({ text, isVisible, cancellable, onDismiss, onC
 
   return (
     <div
-      className="absolute bottom-0 left-0 right-0 z-20 p-4"
-      onClick={handleAction}
+      className="absolute bottom-0 left-0 right-0 z-20 p-2 md:p-4"
     >
       <div
-        className="mx-auto border-3 border-white bg-black/95 p-5 rounded-sm max-w-2xl"
+        className="mx-auto border-2 md:border-3 border-white bg-black/95 p-3 md:p-5 rounded-sm max-w-2xl"
         style={{
           fontFamily: '"Press Start 2P", monospace',
-          fontSize: '13px',
-          lineHeight: '24px',
           color: '#ffffff',
           letterSpacing: '0.5px',
         }}
       >
-        <pre className="whitespace-pre-wrap m-0">{displayedText}</pre>
+        <pre
+          className="whitespace-pre-wrap m-0"
+          style={{ fontSize: 'clamp(9px, 2vw, 13px)', lineHeight: 'clamp(16px, 3.5vw, 24px)' }}
+          onClick={handleAction}
+        >
+          {displayedText}
+        </pre>
         {isComplete && (
-          <div className="flex justify-between items-center mt-3">
-            <span style={{ fontSize: '10px', opacity: 0.6 }}>
-              {cancellable ? 'ENTER: Yes  ESC: No' : 'ENTER: Continue'}
-            </span>
-            <span
-              className="animate-bounce"
-              style={{ fontSize: '14px' }}
+          <div className="flex justify-between items-center mt-2 md:mt-3 gap-2">
+            {/* Cancel button — always visible, works on mobile tap */}
+            <button
+              onClick={(e) => { e.stopPropagation(); handleCancel(); }}
+              onTouchStart={(e) => { e.stopPropagation(); }}
+              className="px-3 py-2 border border-white/30 text-white/50 active:bg-white/10"
+              style={{ fontFamily: '"Press Start 2P", monospace', fontSize: 'clamp(7px, 1.5vw, 10px)' }}
             >
-              ▼
-            </span>
+              {cancellable ? 'CANCEL' : 'CLOSE'}
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); handleAction(); }}
+              onTouchStart={(e) => { e.stopPropagation(); }}
+              className="px-4 py-2 border-2 border-green-400/60 bg-green-500/20 text-green-200 active:bg-green-500/40"
+              style={{ fontFamily: '"Press Start 2P", monospace', fontSize: 'clamp(7px, 1.5vw, 10px)' }}
+            >
+              {cancellable ? 'YES' : 'OK'}
+            </button>
           </div>
         )}
       </div>

@@ -22,6 +22,25 @@ export default function Game() {
   const [dialogCancelCallback, setDialogCancelCallback] = useState<(() => void) | null>(null);
   const [menuVisible, setMenuVisible] = useState(false);
   const [statusMessage, setStatusMessage] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
+    // Prevent all default touch on document for iOS
+    const preventTouch = (e: TouchEvent) => {
+      // Allow touches on buttons/interactive elements
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'BUTTON' || target.closest('button')) return;
+      e.preventDefault();
+    };
+    document.addEventListener('touchmove', preventTouch, { passive: false });
+    document.addEventListener('gesturestart', (e) => e.preventDefault());
+
+    return () => {
+      document.removeEventListener('touchmove', preventTouch);
+    };
+  }, []);
 
   const closeDialog = useCallback(() => {
     setDialogVisible(false);
@@ -109,27 +128,26 @@ export default function Game() {
   }, [handleDialog, handleStatusEffect, handleStatusExpired, handlePause]);
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen bg-black overflow-hidden">
-      {/* Canvas container — fills screen maintaining aspect ratio */}
+    <div
+      className="flex flex-col w-screen h-screen bg-black overflow-hidden"
+      style={{ touchAction: 'none' }}
+    >
+      {/* Game area — takes remaining space above controls */}
       <div
         ref={containerRef}
         tabIndex={0}
-        className="relative outline-none flex items-center justify-center"
-        style={{
-          width: '100vw',
-          height: '100vh',
-          touchAction: 'none',
-        }}
+        className="relative outline-none flex-1 min-h-0"
+        style={{ touchAction: 'none' }}
       >
         {/* Title overlay */}
         <div
-          className="absolute top-0 left-0 right-0 z-10 text-center py-3"
+          className="absolute top-0 left-0 right-0 z-10 text-center py-2 md:py-3"
           style={{
             background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)',
           }}
         >
           <h1
-            className="text-white text-lg tracking-widest"
+            className="text-white text-xs md:text-lg tracking-widest"
             style={{ fontFamily: '"Press Start 2P", monospace' }}
           >
             Nicholaus C. Mills
@@ -140,8 +158,8 @@ export default function Game() {
           ref={canvasRef}
           style={{
             imageRendering: 'pixelated',
-            width: '100vw',
-            height: '100vh',
+            width: '100%',
+            height: '100%',
           }}
         />
 
@@ -163,10 +181,10 @@ export default function Game() {
         {/* Status effect message */}
         {statusMessage && (
           <div
-            className="absolute top-6 left-1/2 -translate-x-1/2 z-20 text-white bg-black/85 border-2 border-white/40 px-6 py-3 rounded-sm"
+            className="absolute top-10 md:top-6 left-1/2 -translate-x-1/2 z-20 text-white bg-black/85 border-2 border-white/40 px-3 md:px-6 py-2 md:py-3 rounded-sm"
             style={{
               fontFamily: '"Press Start 2P", monospace',
-              fontSize: '14px',
+              fontSize: isMobile ? '9px' : '14px',
             }}
           >
             {statusMessage}
@@ -174,10 +192,26 @@ export default function Game() {
         )}
       </div>
 
-      {/* Mobile controls — overlaid at bottom */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <MobileControls input={inputRef.current} />
-      </div>
+      {/* Mobile controls — fixed at bottom, only on touch devices */}
+      {isMobile && (
+        <div className="shrink-0 bg-black/90 border-t border-white/10 safe-area-bottom">
+          <MobileControls input={inputRef.current} onMenuPress={handlePause} />
+        </div>
+      )}
+
+      {/* Desktop instructions — only on non-touch */}
+      {!isMobile && (
+        <div
+          className="shrink-0 text-gray-500 text-center py-1"
+          style={{
+            fontFamily: '"Press Start 2P", monospace',
+            fontSize: '6px',
+            lineHeight: '12px',
+          }}
+        >
+          ARROW KEYS / WASD: Move &nbsp; ENTER / SPACE: Interact &nbsp; ESC: Menu / Cancel
+        </div>
+      )}
     </div>
   );
 }
