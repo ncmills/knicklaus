@@ -60,6 +60,7 @@ export default function DialogBox({ text, isVisible, cancellable, onDismiss, onC
     if (!isVisible) return;
 
     const handler = (e: KeyboardEvent) => {
+      if (e.repeat) return; // Ignore key repeats
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         handleAction();

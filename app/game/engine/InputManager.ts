@@ -4,6 +4,7 @@ export class InputManager {
   private element: HTMLElement | null = null;
 
   private onKeyDown = (e: KeyboardEvent) => {
+    if (e.repeat) return; // Ignore held-down key repeats
     const key = e.key.toLowerCase();
     if (['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'w', 'a', 's', 'd', 'enter', ' ', 'escape'].includes(key)) {
       e.preventDefault();

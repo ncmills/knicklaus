@@ -88,15 +88,19 @@ export class GameEngine {
     }
   }
 
-  private dialogCooldown = 0;
+  private dialogClosedAt = 0;
+  private static readonly DIALOG_COOLDOWN_MS = 500; // half second cooldown
 
   setDialogActive(active: boolean) {
     this.dialogActive = active;
     if (!active) {
-      // Prevent the key that dismissed the dialog from immediately re-triggering
-      this.dialogCooldown = 20; // ~20 frames cooldown
+      this.dialogClosedAt = Date.now();
       this.input.clearAll();
     }
+  }
+
+  private isInDialogCooldown(): boolean {
+    return Date.now() - this.dialogClosedAt < GameEngine.DIALOG_COOLDOWN_MS;
   }
 
   setPaused(paused: boolean) {
@@ -123,15 +127,18 @@ export class GameEngine {
     // Don't process movement during dialog
     if (this.dialogActive) return;
 
-    // Cooldown after dialog dismiss to prevent re-triggering
-    if (this.dialogCooldown > 0) {
-      this.dialogCooldown--;
-      this.input.clearAll(); // Flush ALL keys so nothing leaks through
-      return;
+    // Cooldown after dialog dismiss — allow movement but block interactions
+    const inCooldown = this.isInDialogCooldown();
+
+    if (inCooldown) {
+      // During cooldown, allow movement but eat action/escape presses
+      if (this.input.action || this.input.escape) {
+        this.input.clearAll();
+      }
     }
 
-    // Check for escape/pause
-    if (this.input.escape) {
+    // Check for escape/pause (only outside cooldown)
+    if (!inCooldown && this.input.escape) {
       this.callbacks.onPause();
       return;
     }
@@ -148,13 +155,13 @@ export class GameEngine {
     if (this.state.isMoving) {
       this.continueMovement();
     } else {
-      // Check for interaction
-      if (this.input.action) {
+      // Check for interaction (only outside cooldown)
+      if (!inCooldown && this.input.action) {
         this.tryInteract();
         return;
       }
 
-      // Check for new movement
+      // Allow movement always
       this.tryStartMovement();
     }
   }
