@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Playfair_Display } from "next/font/google";
+import { Press_Start_2P } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const pressStart = Press_Start_2P({
+  variable: "--font-pixel",
   subsets: ["latin"],
-  weight: ["400", "700", "900"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
-  title: "Nicholaus C. Mills",
-  description: "Home of all my projects",
+  title: "KNICKOLAUS - Nicholaus C. Mills",
+  description: "A Pokemon-style adventure through my projects",
+  metadataBase: new URL("https://knickolaus.com"),
 };
 
 export default function RootLayout({
@@ -21,15 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} h-full`}>
-      <body className="min-h-full flex flex-col bg-[#e8e4df] text-black font-[family-name:var(--font-playfair)]">
-        <header className="w-full fixed top-0 z-50 bg-gradient-to-b from-white/70 to-transparent">
-          <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-center">
-            <span className="text-3xl font-black tracking-tight text-black">
-              Nicholaus C. Mills
-            </span>
-          </div>
-        </header>
+    <html lang="en" className={`${pressStart.variable} h-full`}>
+      <body className="min-h-full bg-black text-white overflow-hidden">
         {children}
         <Analytics />
         <SpeedInsights />
