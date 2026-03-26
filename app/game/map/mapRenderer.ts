@@ -44,9 +44,10 @@ export function renderLabels(
 
   for (const building of buildings) {
     const [doorCol, doorRow] = building.doorTile;
-    // Position label above the building roof
+    // Position label above the building — clamp so it doesn't go above row 2
     const labelX = doorCol * TILE_SIZE - cameraX + TILE_SIZE / 2;
-    const labelY = (doorRow - 4) * TILE_SIZE - cameraY + TILE_SIZE / 2;
+    const labelRow = Math.max(doorRow - 4, 2);
+    const labelY = labelRow * TILE_SIZE - cameraY + TILE_SIZE / 2;
 
     // Measure text
     const name = building.name;
