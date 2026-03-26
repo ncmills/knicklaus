@@ -7,7 +7,7 @@ export const buildings: Building[] = [
     type: 'gym',
     url: 'https://tourdefore.com',
     doorTile: [6, 4],  // Path tile in front of the door
-    dialogText: 'TOUR DE FORE GYM\n\nPlan your next epic golf trip\nwith AI-powered recommendations.\n\nEnter the gym?',
+    dialogText: 'TOUR DE FORE GYM\n\nSix years of fairways,\nfriendships, and questionable\nhandicaps.\n\nEnter the gym?',
     color: '#27ae60',
   },
   {
@@ -15,7 +15,7 @@ export const buildings: Building[] = [
     type: 'gym',
     url: 'https://doppelwriter.com',
     doorTile: [12, 4],
-    dialogText: 'DOPPELWRITER GYM\n\nWrite in your own voice with\nAI that learns your style.\n\nEnter the gym?',
+    dialogText: 'DOPPELWRITER GYM\n\nAI-powered writing that clones\nyour voice. Edit drafts and\ngenerate content in any style.\n\nEnter the gym?',
     color: '#d4a017',
   },
   {
@@ -23,7 +23,7 @@ export const buildings: Building[] = [
     type: 'gym',
     url: 'https://whatpeptidesdo.com',
     doorTile: [18, 4],
-    dialogText: 'WHATPEPTIDESDO GYM\n\nThe internet\'s most comprehensive\npeptide research guide.\n\nEnter the gym?',
+    dialogText: 'WHATPEPTIDESDO GYM\n\nThe complete guide to peptides:\nwhat they are, how they work,\nand an AI stacking engine.\n\nEnter the gym?',
     color: '#e07832',
   },
   {
@@ -31,7 +31,7 @@ export const buildings: Building[] = [
     type: 'gym',
     url: 'https://imfrustrated.org',
     doorTile: [6, 9],
-    dialogText: "I'M FRUSTRATED GYM\n\nFree legal resources for\npeople who need help.\n\nEnter the gym?",
+    dialogText: "I'M FRUSTRATED GYM\n\nTalk to a real attorney before\nyou hire one. Free, honest\nlegal guidance.\n\nEnter the gym?",
     color: '#e8664a',
   },
   {
@@ -39,7 +39,7 @@ export const buildings: Building[] = [
     type: 'gym',
     url: 'https://idonthaveawill.com',
     doorTile: [21, 9],
-    dialogText: 'IDONTHAVEAWILL GYM\n\nCreate your last will and\ntestament for free in minutes.\n\nEnter the gym?',
+    dialogText: 'IDONTHAVEAWILL GYM\n\nDraft a simple will for free\nin about 10 minutes. All 50\nstates + DC. No account needed.\n\nEnter the gym?',
     color: '#2c3e6b',
   },
 

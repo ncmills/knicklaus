@@ -12,8 +12,19 @@ const pressStart = Press_Start_2P({
 
 export const metadata: Metadata = {
   title: "KNICKOLAUS - Nicholaus C. Mills",
-  description: "A Pokemon-style adventure through my projects",
+  description: "Explore my projects in a Pokemon-style RPG adventure. Walk through town, visit gyms, and discover what I've built.",
   metadataBase: new URL("https://knickolaus.com"),
+  openGraph: {
+    title: "KNICKOLAUS",
+    description: "Explore my projects in a Pokemon-style RPG adventure.",
+    siteName: "Nicholaus C. Mills",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KNICKOLAUS - Nicholaus C. Mills",
+    description: "Explore my projects in a Pokemon-style RPG adventure.",
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
