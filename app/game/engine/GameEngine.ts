@@ -93,9 +93,9 @@ export class GameEngine {
   setDialogActive(active: boolean) {
     this.dialogActive = active;
     if (!active) {
-      // Prevent the Enter that dismissed the dialog from immediately re-triggering interaction
-      this.dialogCooldown = 10; // ~10 frames cooldown
-      this.input.clearJustPressed();
+      // Prevent the key that dismissed the dialog from immediately re-triggering
+      this.dialogCooldown = 20; // ~20 frames cooldown
+      this.input.clearAll();
     }
   }
 
@@ -126,7 +126,7 @@ export class GameEngine {
     // Cooldown after dialog dismiss to prevent re-triggering
     if (this.dialogCooldown > 0) {
       this.dialogCooldown--;
-      this.input.clearJustPressed();
+      this.input.clearAll(); // Flush ALL keys so nothing leaks through
       return;
     }
 

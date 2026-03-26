@@ -47,6 +47,12 @@ export class InputManager {
     this.justPressed.clear();
   }
 
+  // Flush everything — used after dialog dismiss to prevent leaking keys
+  clearAll() {
+    this.keys.clear();
+    this.justPressed.clear();
+  }
+
   // Touch input simulation
   simulateKeyDown(key: string) {
     this.keys.add(key);
