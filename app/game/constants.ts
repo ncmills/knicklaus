@@ -15,7 +15,7 @@ export const CANVAS_HEIGHT = MAP_ROWS * TILE_SIZE;  // 352 native
 export const PLAYER_SPEED = 2; // pixels per frame (native scale)
 export const WALK_ANIM_SPEED = 4; // frames per sprite change during movement
 
-export const DIALOG_CHAR_SPEED = 30; // ms per character in typewriter effect
+export const DIALOG_CHAR_SPEED = 15; // ms per character in typewriter effect
 
 export const STATUS_EFFECT_DURATION = 600; // frames (~10 seconds at 60fps)
 

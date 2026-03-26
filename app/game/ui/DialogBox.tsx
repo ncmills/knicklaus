@@ -40,6 +40,7 @@ export default function DialogBox({ text, isVisible, cancellable, onDismiss, onC
   }, [text, isVisible]);
 
   const handleAction = useCallback(() => {
+    // Single press skips text AND shows buttons. If already complete, confirm.
     if (!isComplete) {
       setDisplayedChars(text.length);
       setIsComplete(true);
