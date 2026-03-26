@@ -45,16 +45,16 @@ export const buildings: Building[] = [
 
   // ── BAR ──
   {
-    name: 'The Tipsy Intern',
+    name: "Knick Cage's Collapse",
     type: 'bar',
     doorTile: [6, 14],
-    dialogText: "Welcome to THE TIPSY INTERN!\n\nLooks like they're pouring\ngenerously tonight...\n\nStep inside?",
+    dialogText: "Welcome to KNICK CAGE'S COLLAPSE!\n\nLooks like they're pouring\ngenerously tonight...\n\nStep inside?",
     color: '#4a3020',
   },
 
   // ── POND ──
   {
-    name: 'Knickolaus Pond',
+    name: 'Wet Whistle',
     type: 'pond',
     doorTile: [24, 13],
     dialogText: "The water looks refreshing...\nand surprisingly deep.\n\nGet a closer look?",
