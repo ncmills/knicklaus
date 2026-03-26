@@ -129,8 +129,8 @@ export default function Game() {
 
   return (
     <div
-      className="flex flex-col w-screen h-screen bg-black overflow-hidden"
-      style={{ touchAction: 'none' }}
+      className="flex flex-col w-screen bg-black overflow-hidden"
+      style={{ touchAction: 'none', height: '100dvh' }}
     >
       {/* Game area — takes remaining space above controls */}
       <div
@@ -194,7 +194,10 @@ export default function Game() {
 
       {/* Mobile controls — fixed at bottom, only on touch devices */}
       {isMobile && (
-        <div className="shrink-0 bg-black/90 border-t border-white/10 safe-area-bottom">
+        <div
+          className="shrink-0 bg-black/90 border-t border-white/10"
+          style={{ paddingBottom: 'env(safe-area-inset-bottom, 8px)' }}
+        >
           <MobileControls input={inputRef.current} onMenuPress={handlePause} />
         </div>
       )}
